@@ -54,12 +54,12 @@ export const experience = [
 
 export const projects = [
   {
-    name: "Agentflow — Enterprise Document Copilot",
+    name: "Agentflow — Document Intelligence Platform",
     link: "https://github.com/0xrameshh/agentflow",
     stack: ["Python", "LangGraph", "FastAPI", "Chroma", "Next.js", "TypeScript"],
     highlights: [
       "Production-style document Q&A — multi-format RAG, LangGraph agent with critic loop, cited answers.",
-      "Next.js copilot UI, SSE streaming, YAML eval suite (92% pass), 49 tests, GitHub Actions CI.",
+      "Next.js chat UI, SSE streaming, YAML eval suite (92% pass), 49 tests, GitHub Actions CI.",
     ],
   },
   {
