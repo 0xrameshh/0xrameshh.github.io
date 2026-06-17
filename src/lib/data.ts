@@ -54,12 +54,21 @@ export const experience = [
 
 export const projects = [
   {
+    name: "FeedbackStar",
+    link: "https://github.com/0xrameshh/feedbackstar",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Better Auth"],
+    highlights: [
+      "Full-stack feedback SaaS — vanilla JS embed widget, multi-project dashboard, analytics, and email notifications.",
+      "Better Auth + Polar.sh billing, Drizzle ORM with 11 migrations; live at feedbackstar.vercel.app.",
+    ],
+  },
+  {
     name: "Agentflow — Document Intelligence Platform",
     link: "https://github.com/0xrameshh/agentflow",
-    stack: ["Python", "LangGraph", "FastAPI", "Chroma", "Next.js", "TypeScript"],
+    stack: ["TypeScript", "LangGraph.js", "Next.js", "Chroma", "Bun"],
     highlights: [
-      "Production-style document Q&A — multi-format RAG, LangGraph agent with critic loop, cited answers.",
-      "Next.js chat UI, SSE streaming, YAML eval suite (92% pass), 49 tests, GitHub Actions CI.",
+      "Full-stack TypeScript document Q&A — multi-format RAG, LangGraph.js agent with critic loop, cited answers.",
+      "Next.js API routes + SSE streaming, YAML eval suite, Vitest + GitHub Actions CI.",
     ],
   },
   {
