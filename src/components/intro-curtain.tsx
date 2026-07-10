@@ -28,7 +28,7 @@ export default function IntroCurtain() {
           RK
         </span>
         <div className="h-0.5 w-36 overflow-hidden rounded-full bg-white/10">
-          <div className="h-full w-1/3 animate-[curtain-load_0.9s_ease-in-out_infinite] bg-gradient-to-r from-brand-400 to-cyan-400" />
+          <div className="h-full w-1/3 animate-[curtain-load_0.9s_ease-in-out_infinite] bg-gradient-to-r from-brand-400 to-brand-200" />
         </div>
         <p className="text-xs font-medium uppercase tracking-[0.3em] text-zinc-500">
           Ramesh Kumar

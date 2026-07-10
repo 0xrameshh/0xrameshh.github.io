@@ -31,7 +31,7 @@ export default function Timeline({
     >
       <span
         aria-hidden
-        className="absolute left-0 top-0 w-px bg-gradient-to-b from-brand-500 to-cyan-400"
+        className="absolute left-0 top-0 w-px bg-gradient-to-b from-brand-600 to-brand-300"
         style={{ height: `${fill}%` }}
       />
       {children}

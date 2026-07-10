@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, FolderGit2, Sun, Moon } from 'lucide-react'
 import { personal } from '@/lib/data'
-import AccentSwitcher from './accent-switcher'
 import { toggleTheme } from '@/lib/theme'
 
 const INITIALS = personal.name
@@ -101,7 +100,6 @@ export default function Nav() {
             </button>
           ))}
           <span className="mx-2 h-4 w-px bg-zinc-200 dark:bg-zinc-700" />
-          <AccentSwitcher />
           <button
             onClick={toggleDark}
             className="p-1.5 text-zinc-400 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -167,7 +165,6 @@ export default function Nav() {
               <Sun size={16} className="hidden dark:block" />
               <Moon size={16} className="block dark:hidden" />
             </button>
-            <AccentSwitcher />
             <a
               href={`https://${personal.website}`}
               target="_blank"

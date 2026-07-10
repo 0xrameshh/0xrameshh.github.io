@@ -38,7 +38,7 @@ export default function Constellation() {
       const v = getComputedStyle(document.documentElement)
         .getPropertyValue('--color-brand-500')
         .trim()
-      return v || '#6366f1'
+      return v || '#71717a'
     }
 
     const resize = () => {

@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Search, Sun, FolderGit2, Mail, Palette, ArrowDownToLine } from 'lucide-react'
-import { ACCENT_ORDER, setAccent, toggleTheme } from '@/lib/theme'
+import { Search, Sun, FolderGit2, Mail, ArrowDownToLine } from 'lucide-react'
+import { toggleTheme } from '@/lib/theme'
 import { personal } from '@/lib/data'
 
 type Item = {
@@ -30,13 +30,6 @@ export default function CommandPalette() {
       { id: 'nav-experience', label: 'Go to Experience', hint: 'Section', icon: <ArrowDownToLine size={15} />, run: () => go('experience') },
       { id: 'nav-contact', label: 'Go to Contact', hint: 'Section', icon: <ArrowDownToLine size={15} />, run: () => go('contact') },
       { id: 'theme', label: 'Toggle dark mode', hint: 'Theme', icon: <Sun size={15} />, run: toggleTheme },
-      ...ACCENT_ORDER.map((a) => ({
-        id: `accent-${a}`,
-        label: `Accent: ${a}`,
-        hint: 'Theme',
-        icon: <Palette size={15} />,
-        run: () => setAccent(a),
-      })),
       { id: 'gh', label: 'Open GitHub', hint: 'Link', icon: <FolderGit2 size={15} />, run: () => window.open(`https://${personal.website}`, '_blank') },
       { id: 'mail', label: 'Email me', hint: 'Link', icon: <Mail size={15} />, run: () => (window.location.href = `mailto:${personal.email}`) },
     ] as Item[]

@@ -21,7 +21,7 @@ export default function Confetti() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const colors = ['#6366f1', '#22d3ee', '#f472b6', '#34d399', '#fbbf24']
+    const colors = ['#18181b', '#3f3f46', '#71717a', '#a1a1aa', '#d4d4d8']
     let parts: Particle[] = []
     let raf = 0
     let running = false
