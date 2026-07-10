@@ -10,346 +10,233 @@ import {
 import Nav from "@/components/nav";
 import Cursor from "@/components/cursor";
 import ScrollProgress from "@/components/scroll-progress";
-import SectionRail from "@/components/section-rail";
 import CommandPalette from "@/components/command-palette";
 import EmailButton from "@/components/email-button";
-import { ArrowUpRight, MapPin, Mail } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
-const Label = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <span
-    className={`font-mono text-[11px] uppercase tracking-[0.18em] ${className}`}
-  >
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <span className="mb-8 block font-mono text-xs uppercase tracking-[0.2em] text-zinc-400">
     {children}
   </span>
 );
 
+const ExternalLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group inline-flex items-center gap-1 text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
+  >
+    {children}
+    <ArrowUpRight
+      size={12}
+      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+    />
+  </a>
+);
 
 export default function Home() {
   return (
     <>
       <Cursor />
       <ScrollProgress />
-      <SectionRail />
       <CommandPalette />
       <Nav />
 
-      <main className="relative min-h-screen bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+      <main className="mx-auto max-w-4xl px-6 pb-20 text-zinc-950 dark:text-zinc-50">
         {/* ── Hero ── */}
-        <section className="relative grid min-h-[92vh] grid-cols-1 overflow-hidden border-b border-zinc-950 dark:border-zinc-50 lg:grid-cols-12">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10 flex select-none items-center justify-center overflow-hidden"
-          >
-            <span className="text-[clamp(8rem,22vw,26rem)] font-bold leading-none tracking-tighter text-zinc-100 dark:text-zinc-800">
-              ENGINEER
+        <section className="flex min-h-[85vh] flex-col justify-center pt-24">
+          <SectionLabel>Portfolio / {new Date().getFullYear()}</SectionLabel>
+
+          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl md:text-8xl">
+            {personal.name}
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-xl text-zinc-500 sm:text-2xl">
+            {personal.title}
+          </p>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
+            {personal.summary}
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <EmailButton />
+            <ExternalLink href={`https://${personal.website}`}>
+              View GitHub
+            </ExternalLink>
+          </div>
+
+          <div className="mt-16 flex items-center gap-2 text-sm text-zinc-500">
+            <MapPin size={14} />
+            <span>{personal.location}</span>
+            <span className="mx-2">·</span>
+            <span
+              className={`inline-flex items-center gap-1.5 ${
+                personal.available ? "text-zinc-950 dark:text-zinc-50" : ""
+              }`}
+            >
+              <span className="relative flex h-2 w-2">
+                {personal.available && (
+                  <>
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-current opacity-40 animate-ping" />
+                    <span className="relative inline-flex h-full w-full rounded-full bg-current" />
+                  </>
+                )}
+                {!personal.available && (
+                  <span className="inline-flex h-full w-full rounded-full bg-current" />
+                )}
+              </span>
+              {personal.status}
             </span>
-          </div>
-          <div className="flex flex-col justify-between border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-7 lg:border-b-0 lg:border-r">
-            <div className="flex items-center justify-between">
-              <Label>Portfolio / {new Date().getFullYear()}</Label>
-              <div className="flex items-center gap-2 text-zinc-500">
-                <MapPin size={12} />
-                <Label>{personal.location}</Label>
-              </div>
-            </div>
-
-            <div>
-              <h1 className="text-[clamp(3.5rem,12vw,14rem)] font-bold leading-[0.82] tracking-tighter">
-                {personal.name.split(" ").map((part, i, arr) => (
-                  <span key={i} className="block">
-                    {part}
-                    {i < arr.length - 1 ? "" : "."}
-                  </span>
-                ))}
-              </h1>
-              <p className="mt-8 max-w-lg text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
-                {personal.summary}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Label
-                className={`inline-flex items-center gap-2 ${
-                  personal.available ? "text-zinc-950 dark:text-zinc-50" : "text-zinc-400"
-                }`}
-              >
-                <span className="relative flex h-2 w-2">
-                  {personal.available && (
-                    <>
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-current opacity-40 animate-ping" />
-                      <span className="relative inline-flex h-full w-full rounded-full bg-current" />
-                    </>
-                  )}
-                  {!personal.available && (
-                    <span className="inline-flex h-full w-full rounded-full bg-current" />
-                  )}
-                </span>
-                {personal.status}
-              </Label>
-              <a
-                href={`mailto:${personal.email}`}
-                className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
-              >
-                <Mail size={12} />
-                {personal.email}
-                <ArrowUpRight
-                  size={12}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col justify-between p-6 lg:col-span-5">
-            <div className="space-y-10">
-              <div>
-                <Label className="mb-2 block text-zinc-400">Role</Label>
-                <p className="text-2xl font-medium leading-tight tracking-tight">
-                  {personal.title}
-                </p>
-              </div>
-              <div>
-                <Label className="mb-2 block text-zinc-400">Building</Label>
-                <p className="text-xl font-medium">{currently.building}</p>
-                <p className="mt-1 text-zinc-500 dark:text-zinc-400">
-                  Learning {currently.learning}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-px border border-zinc-950 bg-zinc-950 dark:border-zinc-50 dark:bg-zinc-50">
-              {stats.map((s) => (
-                <div
-                  key={s.label}
-                  className="bg-white p-5 dark:bg-zinc-950"
-                >
-                  <p className="text-3xl font-bold tracking-tight">
-                    {s.value}
-                    {s.suffix}
-                  </p>
-                  <Label className="text-zinc-400 dark:text-zinc-300">{s.label}</Label>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
+        {/* ── Stats ── */}
+        <section className="grid grid-cols-2 gap-8 border-y border-zinc-200 py-10 dark:border-zinc-800 md:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <p className="text-3xl font-bold tracking-tight sm:text-4xl">
+                {s.value}
+                {s.suffix}
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-wider text-zinc-400">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        {/* ── Currently ── */}
+        <section className="py-20">
+          <SectionLabel>Currently</SectionLabel>
+          <p className="text-2xl font-medium sm:text-3xl">
+            Building {currently.building}
+          </p>
+          <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+            Learning {currently.learning}
+          </p>
+        </section>
+
         {/* ── Skills ── */}
-        <section
-          id="skills"
-          className="border-b border-zinc-950 dark:border-zinc-50"
-        >
-          <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
-              <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
-                  01
-                </span>
-                <Label className="block text-zinc-400">Skills</Label>
+        <section id="skills" className="scroll-mt-24 border-t border-zinc-200 py-20 dark:border-zinc-800">
+          <SectionLabel>Skills</SectionLabel>
+          <div className="grid gap-10 sm:grid-cols-2">
+            {skillGroups.map((g) => (
+              <div key={g.category}>
+                <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-zinc-400">
+                  {g.category}
+                </h3>
+                <p className="text-lg leading-snug">
+                  {g.items.join(" · ")}
+                </p>
               </div>
-            </div>
-            <div className="p-6 lg:col-span-9">
-              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {skillGroups.map((g) => (
-                  <div key={g.category}>
-                    <Label className="mb-3 block text-zinc-400">
-                      {g.category}
-                    </Label>
-                    <p className="text-lg font-medium leading-snug">
-                      {g.items.join(" · ")}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* ── Experience ── */}
-        <section
-          id="experience"
-          className="border-b border-zinc-950 dark:border-zinc-50"
-        >
-          <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
-              <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
-                  02
-                </span>
-                <Label className="block text-zinc-400">Experience</Label>
-              </div>
-            </div>
-            <div className="p-6 lg:col-span-9">
-              {experience.map((exp) => (
-                <div
-                  key={exp.role}
-                  className="grid gap-4 border-b border-zinc-200 py-8 last:border-0 dark:border-zinc-800 sm:grid-cols-12"
-                >
-                  <div className="sm:col-span-4">
-                    <p className="text-lg font-semibold tracking-tight">
-                      {exp.role}
-                    </p>
-                    <p className="text-zinc-500">{exp.company}</p>
-                  </div>
-                  <div className="sm:col-span-5">
-                    <ul className="space-y-2">
-                      {exp.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300"
-                        >
-                          — {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="sm:col-span-3">
-                    <Label className="block text-zinc-400">{exp.period}</Label>
-                    <Label className="block text-zinc-400">
-                      {exp.location}
-                    </Label>
-                  </div>
+        <section id="experience" className="scroll-mt-24 border-t border-zinc-200 py-20 dark:border-zinc-800">
+          <SectionLabel>Experience</SectionLabel>
+          <div className="space-y-10">
+            {experience.map((exp) => (
+              <div key={exp.role}>
+                <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
+                  <h3 className="text-xl font-semibold tracking-tight">
+                    {exp.role}
+                  </h3>
+                  <span className="font-mono text-xs uppercase tracking-wider text-zinc-400">
+                    {exp.period}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <p className="mt-1 text-zinc-500">
+                  {exp.company} · {exp.location}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {exp.bullets.map((b) => (
+                    <li
+                      key={b}
+                      className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300"
+                    >
+                      — {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* ── Projects ── */}
-        <section
-          id="projects"
-          className="border-b border-zinc-950 dark:border-zinc-50"
-        >
-          <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
-              <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
-                  03
-                </span>
-                <Label className="block text-zinc-400">Projects</Label>
-              </div>
-            </div>
-            <div className="lg:col-span-9">
-              {projects.map((p, i) => (
-                <a
-                  key={p.name}
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group grid items-start gap-4 border-b border-zinc-200 p-6 transition-all last:border-0 hover:bg-zinc-950 hover:text-white dark:border-zinc-800 dark:hover:bg-zinc-50 dark:hover:text-zinc-950 sm:grid-cols-12"
-                >
-                  <div className="sm:col-span-1">
-                    <Label className="text-zinc-400 transition-colors group-hover:text-zinc-300 dark:group-hover:text-zinc-700">
-                      {String(i + 1).padStart(2, "0")}
-                    </Label>
-                  </div>
-                  <div className="sm:col-span-5">
-                    <p className="text-xl font-semibold tracking-tight">
-                      {p.name}
-                    </p>
-                    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                      {p.stack.map((t) => (
-                        <Label
-                          key={t}
-                          className="text-zinc-400 transition-colors group-hover:text-zinc-300 dark:group-hover:text-zinc-700"
-                        >
-                          {t}
-                        </Label>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="sm:col-span-5">
-                    <p className="text-sm leading-relaxed transition-colors">
-                      {p.highlights[0]}
-                    </p>
-                    {p.highlights[1] && (
-                      <p className="mt-2 text-sm leading-relaxed opacity-0 transition-opacity group-hover:opacity-60">
-                        {p.highlights[1]}
-                      </p>
-                    )}
-                  </div>
-                  <div className="sm:col-span-1 flex justify-end">
-                    <ArrowUpRight
-                      size={18}
-                      className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
+        <section id="projects" className="scroll-mt-24 border-t border-zinc-200 py-20 dark:border-zinc-800">
+          <SectionLabel>Selected Projects</SectionLabel>
+          <div className="grid gap-5">
+            {projects.map((p) => (
+              <a
+                key={p.name}
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-lg border border-zinc-200 p-5 transition-all hover:border-zinc-950 dark:border-zinc-800 dark:hover:border-zinc-50"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {p.name}
+                  </h3>
+                  <ArrowUpRight
+                    size={16}
+                    className="shrink-0 text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </div>
+                <p className="mt-2 font-mono text-xs uppercase tracking-wider text-zinc-400">
+                  {p.stack.join(" · ")}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                  {p.highlights[0]}
+                </p>
+              </a>
+            ))}
           </div>
         </section>
 
         {/* ── Education / Contact ── */}
-        <section
-          id="contact"
-          className="border-b border-zinc-950 dark:border-zinc-50"
-        >
-          <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
-              <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
-                  04
-                </span>
-                <Label className="block text-zinc-400">Info</Label>
-              </div>
+        <section id="contact" className="scroll-mt-24 border-t border-zinc-200 py-20 dark:border-zinc-800">
+          <div className="grid gap-10 sm:grid-cols-2">
+            <div>
+              <SectionLabel>Education</SectionLabel>
+              <p className="text-lg font-medium">{education.school}</p>
+              <p className="mt-1 text-zinc-500">
+                {education.degree} · {education.year}
+              </p>
             </div>
-            <div className="p-6 lg:col-span-9">
-              <div className="grid gap-10 sm:grid-cols-2">
-                <div>
-                  <Label className="mb-2 block text-zinc-400">Education</Label>
-                  <p className="text-lg font-medium">{education.school}</p>
-                  <p className="text-zinc-500">
-                    {education.degree} · {education.year}
-                  </p>
-                </div>
-                <div>
-                  <Label className="mb-2 block text-zinc-400">Contact</Label>
-                  <EmailButton />
-                </div>
+            <div>
+              <SectionLabel>Contact</SectionLabel>
+              <p className="text-2xl font-medium sm:text-3xl">
+                {personal.status}
+              </p>
+              <div className="mt-6">
+                <EmailButton />
               </div>
             </div>
           </div>
         </section>
 
         {/* ── Footer ── */}
-        <footer className="flex flex-col justify-between gap-4 p-6 sm:flex-row sm:items-center">
-          <Label className="text-zinc-400">
+        <footer className="flex flex-col items-start justify-between gap-4 border-t border-zinc-200 pt-10 dark:border-zinc-800 sm:flex-row sm:items-center">
+          <p className="text-sm text-zinc-400">
             © {new Date().getFullYear()} {personal.name}
-          </Label>
+          </p>
           <div className="flex items-center gap-6">
-            <a
-              href={`https://${personal.website}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1"
-            >
-              <Label className="text-zinc-400 transition-colors group-hover:text-zinc-950 dark:group-hover:text-zinc-50">
-                GitHub
-              </Label>
-              <ArrowUpRight
-                size={12}
-                className="text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
-            <a
-              href={`mailto:${personal.email}`}
-              className="group inline-flex items-center gap-1"
-            >
-              <Label className="text-zinc-400 transition-colors group-hover:text-zinc-950 dark:group-hover:text-zinc-50">
-                Email
-              </Label>
-              <ArrowUpRight
-                size={12}
-                className="text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
+            <ExternalLink href={`https://${personal.website}`}>
+              GitHub
+            </ExternalLink>
+            <ExternalLink href={`mailto:${personal.email}`}>Email</ExternalLink>
           </div>
         </footer>
       </main>
