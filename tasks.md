@@ -26,3 +26,4 @@
 - T1a: Motion-safety — custom cursor respects prefers-reduced-motion
 - T2: SEO/social completeness (twitter, canonical, robots, themeColor, metadataBase)
 - T5: Monochrome (black & white) theme — remove blue/cyan/pink accents
+- T6: Remove stacked badge icons (BadgeWall)
