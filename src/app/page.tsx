@@ -15,7 +15,7 @@ import EmailButton from "@/components/email-button";
 import { ArrowUpRight, MapPin } from "lucide-react";
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <span className="mb-8 block font-mono text-xs uppercase tracking-[0.2em] text-zinc-300">
+  <span className="mb-8 block font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
     {children}
   </span>
 );
@@ -31,7 +31,7 @@ const ExternalLink = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="group inline-flex items-center gap-1 text-zinc-400 transition-colors hover:text-zinc-950 dark:text-zinc-200 dark:hover:text-zinc-50"
+    className="group inline-flex items-center gap-1 text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
   >
     {children}
     <ArrowUpRight
@@ -58,11 +58,11 @@ export default function Home() {
             {personal.name}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-xl font-light text-zinc-400 sm:text-2xl">
+          <p className="mt-6 max-w-2xl text-xl font-light text-zinc-600 sm:text-2xl">
             {personal.title}
           </p>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-500 dark:text-zinc-200">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
             {personal.summary}
           </p>
 
@@ -73,7 +73,7 @@ export default function Home() {
             </ExternalLink>
           </div>
 
-          <div className="mt-16 flex items-center gap-2 text-sm text-zinc-400">
+          <div className="mt-16 flex items-center gap-2 text-sm text-zinc-500">
             <MapPin size={14} />
             <span>{personal.location}</span>
             <span className="mx-2">·</span>
@@ -106,7 +106,7 @@ export default function Home() {
                 {s.value}
                 {s.suffix}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-wider text-zinc-300">
+              <p className="mt-1 text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 {s.label}
               </p>
             </div>
@@ -119,7 +119,7 @@ export default function Home() {
           <p className="text-2xl font-light sm:text-3xl">
             Building {currently.building}
           </p>
-          <p className="mt-2 text-zinc-400 dark:text-zinc-200">
+          <p className="mt-2 text-zinc-600 dark:text-zinc-300">
             Learning {currently.learning}
           </p>
         </section>
@@ -130,7 +130,7 @@ export default function Home() {
           <div className="grid gap-10 sm:grid-cols-2">
             {skillGroups.map((g) => (
               <div key={g.category}>
-                <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-zinc-300">
+                <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {g.category}
                 </h3>
                 <p className="text-lg font-medium leading-snug">
@@ -151,18 +151,18 @@ export default function Home() {
                   <h3 className="text-xl font-medium tracking-tight">
                     {exp.role}
                   </h3>
-                  <span className="font-mono text-xs uppercase tracking-wider text-zinc-300">
+                  <span className="font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                     {exp.period}
                   </span>
                 </div>
-                <p className="mt-1 text-zinc-400">
+                <p className="mt-1 text-zinc-600">
                   {exp.company} · {exp.location}
                 </p>
                 <ul className="mt-4 space-y-2">
                   {exp.bullets.map((b) => (
                     <li
                       key={b}
-                      className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-200"
+                      className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300"
                     >
                       — {b}
                     </li>
@@ -191,13 +191,13 @@ export default function Home() {
                   </h3>
                   <ArrowUpRight
                     size={16}
-                    className="shrink-0 text-zinc-300 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="shrink-0 text-zinc-500 dark:text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </div>
-                <p className="mt-2 font-mono text-xs uppercase tracking-wider text-zinc-300">
+                <p className="mt-2 font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {p.stack.join(" · ")}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-200">
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                   {p.highlights[0]}
                 </p>
               </a>
@@ -211,7 +211,7 @@ export default function Home() {
             <div>
               <SectionLabel>Education</SectionLabel>
               <p className="text-lg font-medium">{education.school}</p>
-              <p className="mt-1 text-zinc-400">
+              <p className="mt-1 text-zinc-600">
                 {education.degree} · {education.year}
               </p>
             </div>
@@ -229,7 +229,7 @@ export default function Home() {
 
         {/* ── Footer ── */}
         <footer className="flex flex-col items-start justify-between gap-4 border-t border-zinc-200 pt-10 dark:border-zinc-800 sm:flex-row sm:items-center">
-          <p className="text-sm text-zinc-300">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
             © {new Date().getFullYear()} {personal.name}
           </p>
           <div className="flex items-center gap-6">

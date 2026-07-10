@@ -71,7 +71,7 @@ export default function Nav() {
               className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                 activeSection === item.id
                   ? 'text-zinc-950 dark:text-zinc-50'
-                  : 'text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50'
+                  : 'text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50'
               }`}
             >
               {item.label}
@@ -80,7 +80,7 @@ export default function Nav() {
           <span className="mx-2 h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
           <button
             onClick={toggleTheme}
-            className="p-1.5 text-zinc-300 transition-colors hover:text-zinc-950 dark:hover:text-zinc-50"
+            className="p-1.5 text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
             aria-label="Toggle dark mode"
           >
             <Sun size={16} className="hidden dark:block" />
@@ -90,7 +90,7 @@ export default function Nav() {
             href={`https://${personal.website}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 text-zinc-300 transition-colors hover:text-zinc-950 dark:hover:text-zinc-50"
+            className="p-1.5 text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
             aria-label="GitHub"
           >
             <FolderGit2 size={16} />
@@ -100,7 +100,7 @@ export default function Nav() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-1.5 text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 sm:hidden"
+          className="p-1.5 text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 sm:hidden"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -118,7 +118,7 @@ export default function Nav() {
                 className={`w-full rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ${
                   activeSection === item.id
                     ? 'text-zinc-950 dark:text-zinc-50'
-                    : 'text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
                 }`}
               >
                 {item.label}
@@ -128,7 +128,7 @@ export default function Nav() {
           <div className="mt-3 flex items-center gap-3 border-t border-zinc-200 px-3 pt-3 dark:border-zinc-800">
             <button
               onClick={toggleTheme}
-              className="text-zinc-300 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+              className="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
               aria-label="Toggle dark mode"
             >
               <Sun size={16} className="hidden dark:block" />
@@ -138,7 +138,7 @@ export default function Nav() {
               href={`https://${personal.website}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-300 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+              className="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             >
               <FolderGit2 size={16} />
             </a>
