@@ -46,7 +46,7 @@ export default function Home() {
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-10 flex select-none items-center justify-center overflow-hidden"
           >
-            <span className="text-[clamp(8rem,22vw,26rem)] font-bold leading-none tracking-tighter text-zinc-100 dark:text-zinc-900">
+            <span className="text-[clamp(8rem,22vw,26rem)] font-bold leading-none tracking-tighter text-zinc-100 dark:text-zinc-800">
               ENGINEER
             </span>
           </div>
@@ -94,7 +94,7 @@ export default function Home() {
               </Label>
               <a
                 href={`mailto:${personal.email}`}
-                className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50"
+                className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
               >
                 <Mail size={12} />
                 {personal.email}
@@ -117,7 +117,7 @@ export default function Home() {
               <div>
                 <Label className="mb-2 block text-zinc-400">Building</Label>
                 <p className="text-xl font-medium">{currently.building}</p>
-                <p className="mt-1 text-zinc-500">
+                <p className="mt-1 text-zinc-500 dark:text-zinc-400">
                   Learning {currently.learning}
                 </p>
               </div>
@@ -133,7 +133,7 @@ export default function Home() {
                     {s.value}
                     {s.suffix}
                   </p>
-                  <Label className="text-zinc-400">{s.label}</Label>
+                  <Label className="text-zinc-400 dark:text-zinc-300">{s.label}</Label>
                 </div>
               ))}
             </div>
@@ -148,7 +148,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12">
             <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
               <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
                   01
                 </span>
                 <Label className="block text-zinc-400">Skills</Label>
@@ -179,7 +179,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12">
             <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
               <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
                   02
                 </span>
                 <Label className="block text-zinc-400">Experience</Label>
@@ -229,7 +229,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12">
             <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
               <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
                   03
                 </span>
                 <Label className="block text-zinc-400">Projects</Label>
@@ -294,7 +294,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12">
             <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
               <div className="sticky top-24">
-                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-700">
                   04
                 </span>
                 <Label className="block text-zinc-400">Info</Label>
