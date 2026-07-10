@@ -29,3 +29,4 @@
 - T5: Monochrome (black & white) theme — remove blue/cyan/pink accents
 - T6: Remove stacked badge icons (BadgeWall)
 - T7: Complete UI redesign — editorial brutalist layout
+- T9: Iterate brutalist UI — watermark, stronger labels, project hover reveal, EmailButton redesign
