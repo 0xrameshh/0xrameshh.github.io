@@ -1,26 +1,60 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sans = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Ramesh Kumar | Full-Stack & AI Engineer",
+  metadataBase: new URL("https://0xrameshh.github.io"),
+  title: {
+    default: "Ramesh Kumar | Full-Stack & AI Engineer",
+    template: "%s | Ramesh Kumar",
+  },
   description:
     "Full-stack engineer with 3+ years of experience building web, mobile, AI, and Web3 applications.",
+  keywords: [
+    "Full-Stack Engineer",
+    "AI Engineer",
+    "Next.js",
+    "LangGraph",
+    "RAG",
+    "Solana",
+    "Portfolio",
+  ],
+  authors: [{ name: "Ramesh Kumar" }],
+  alternates: { canonical: "/" },
   openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Ramesh Kumar",
     title: "Ramesh Kumar | Full-Stack & AI Engineer",
     description:
       "Full-stack engineer with 3+ years of experience building web, mobile, AI, and Web3 applications.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ramesh Kumar | Full-Stack & AI Engineer",
+    description:
+      "Full-stack engineer with 3+ years of experience building web, mobile, AI, and Web3 applications.",
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
 };
 
 const themeScript = `
@@ -42,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${sans.variable} ${mono.variable} h-full scroll-smooth antialiased`}
       suppressHydrationWarning
     >
       <head>

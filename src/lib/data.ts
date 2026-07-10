@@ -6,35 +6,57 @@ export const personal = {
   phone: "+91 8074862491",
   website: "github.com/0xrameshh",
   portfolio: "0xrameshh.github.io",
+  available: true,
+  status: "Available for freelance & full-time roles",
   summary:
     "Full-stack engineer with 3+ years freelance experience — 50+ shipped projects across web, AI, and systems. I build LangGraph agents, RAG pipelines, and production APIs (FastAPI, Node, Go). Based in Hyderabad.",
 };
 
-export const skills = [
-  "Python",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "LangGraph",
-  "LangChain",
-  "FastAPI",
-  "Node.js",
-  "PostgreSQL",
-  "RAG / Chroma",
-  "pgvector",
-  "Go",
-  "Rust",
-  "Docker",
-  "MongoDB",
-  "React Native",
-  "Electron",
-  "gRPC",
-  "Stripe",
-  "WebSockets",
-  "Solana",
-  "Anchor",
-  "Tailwind CSS",
+export const stats = [
+  { value: 50, suffix: "+", label: "Projects shipped" },
+  { value: 3, suffix: "+", label: "Years freelance" },
+  { value: 20, suffix: "+", label: "Technologies" },
+  { value: 1, suffix: "", label: "App Store game" },
 ];
+
+export const currently = {
+  building: "Agentflow — document intelligence",
+  learning: "Advanced LangGraph orchestration",
+};
+
+export const skillGroups = [
+  {
+    category: "Languages",
+    items: ["Python", "TypeScript", "Go", "Rust", "SQL"],
+  },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "React Native", "Tailwind CSS", "Electron"],
+  },
+  {
+    category: "Backend",
+    items: [
+      "FastAPI",
+      "Node.js",
+      "PostgreSQL",
+      "MongoDB",
+      "gRPC",
+      "WebSockets",
+      "Stripe",
+      "Docker",
+    ],
+  },
+  {
+    category: "AI / ML",
+    items: ["LangGraph", "LangChain", "RAG / Chroma", "pgvector"],
+  },
+  {
+    category: "Blockchain",
+    items: ["Solana", "Anchor", "Ethereum"],
+  },
+];
+
+export const skills = skillGroups.flatMap((g) => g.items);
 
 export const experience = [
   {
@@ -56,6 +78,7 @@ export const projects = [
   {
     name: "FeedbackStar",
     link: "https://github.com/0xrameshh/feedbackstar",
+    tags: ["Web"],
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "Better Auth"],
     highlights: [
       "Full-stack feedback SaaS — vanilla JS embed widget, multi-project dashboard, analytics, and email notifications.",
@@ -65,6 +88,8 @@ export const projects = [
   {
     name: "Agentflow — Document Intelligence Platform",
     link: "https://github.com/0xrameshh/agentflow",
+    featured: true,
+    tags: ["AI", "Web"],
     stack: ["TypeScript", "LangGraph.js", "Next.js", "Chroma", "Bun"],
     highlights: [
       "Full-stack TypeScript document Q&A — multi-format RAG, LangGraph.js agent with critic loop, cited answers.",
@@ -74,6 +99,7 @@ export const projects = [
   {
     name: "Velum",
     link: "https://github.com/0xrameshh/velum",
+    tags: ["Systems"],
     stack: ["Go", "gRPC", "Event Sourcing", "Docker"],
     highlights: [
       "Event-sourced workflow engine — gRPC workers, durable timers, sagas, parallel branches.",
@@ -83,6 +109,7 @@ export const projects = [
   {
     name: "Coworker",
     link: "https://github.com/0xrameshh/coworker",
+    tags: ["AI"],
     stack: ["Electron", "React", "TypeScript", "Rust"],
     highlights: [
       "Electron AI workspace — chat, terminal, file explorer, ripgrep search.",
@@ -92,6 +119,7 @@ export const projects = [
   {
     name: "SHADE",
     link: "https://github.com/0xrameshh/shade",
+    tags: ["Web3"],
     stack: ["Next.js", "Solana", "Web Crypto API", "Tailwind CSS"],
     highlights: [
       "Privacy-focused Solana wallet — burner wallets, passkey login, client-side encryption.",
@@ -101,6 +129,7 @@ export const projects = [
   {
     name: "Solana Stablecoin Standard",
     link: "https://github.com/0xrameshh/solana-stablecoin-standard",
+    tags: ["Web3"],
     stack: ["Rust", "Anchor", "Solana", "Token-2022", "TypeScript"],
     highlights: [
       "Anchor framework for regulated stablecoins — SSS-1 (role-based controls) and SSS-2 (compliance extensions).",
@@ -110,6 +139,7 @@ export const projects = [
   {
     name: "PolySwipe",
     link: "https://github.com/0xrameshh/polyswipe",
+    tags: ["Mobile"],
     stack: ["React Native", "Expo", "NativeWind", "Reanimated", "TanStack Query"],
     highlights: [
       "Tinder-style swipe UI for crypto prediction markets — buy/pass on live market data.",
