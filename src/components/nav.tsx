@@ -56,7 +56,7 @@ export default function Nav() {
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-sm font-semibold tracking-tight transition-opacity hover:opacity-70"
+          className="text-sm font-medium tracking-tight transition-opacity hover:opacity-70"
           aria-label="Back to top"
         >
           {personal.name}

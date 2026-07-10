@@ -54,11 +54,11 @@ export default function Home() {
         <section className="flex min-h-[85vh] flex-col justify-center pt-24">
           <SectionLabel>Portfolio / {new Date().getFullYear()}</SectionLabel>
 
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl md:text-8xl">
+          <h1 className="text-5xl font-light leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
             {personal.name}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-xl text-zinc-400 sm:text-2xl">
+          <p className="mt-6 max-w-2xl text-xl font-light text-zinc-400 sm:text-2xl">
             {personal.title}
           </p>
 
@@ -102,7 +102,7 @@ export default function Home() {
         <section className="grid grid-cols-2 gap-8 border-y border-zinc-200 py-10 dark:border-zinc-800 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="text-3xl font-bold tracking-tight sm:text-4xl">
+              <p className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {s.value}
                 {s.suffix}
               </p>
@@ -116,7 +116,7 @@ export default function Home() {
         {/* ── Currently ── */}
         <section className="py-20">
           <SectionLabel>Currently</SectionLabel>
-          <p className="text-2xl font-medium sm:text-3xl">
+          <p className="text-2xl font-light sm:text-3xl">
             Building {currently.building}
           </p>
           <p className="mt-2 text-zinc-400 dark:text-zinc-200">
@@ -133,7 +133,7 @@ export default function Home() {
                 <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-zinc-300">
                   {g.category}
                 </h3>
-                <p className="text-lg leading-snug">
+                <p className="text-lg font-medium leading-snug">
                   {g.items.join(" · ")}
                 </p>
               </div>
@@ -148,7 +148,7 @@ export default function Home() {
             {experience.map((exp) => (
               <div key={exp.role}>
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
-                  <h3 className="text-xl font-semibold tracking-tight">
+                  <h3 className="text-xl font-medium tracking-tight">
                     {exp.role}
                   </h3>
                   <span className="font-mono text-xs uppercase tracking-wider text-zinc-300">
@@ -186,7 +186,7 @@ export default function Home() {
                 className="group block rounded-lg border border-zinc-200 p-5 transition-all hover:border-zinc-950 dark:border-zinc-800 dark:hover:border-zinc-50"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold tracking-tight">
+                  <h3 className="text-lg font-medium tracking-tight">
                     {p.name}
                   </h3>
                   <ArrowUpRight
@@ -217,7 +217,7 @@ export default function Home() {
             </div>
             <div>
               <SectionLabel>Contact</SectionLabel>
-              <p className="text-2xl font-medium sm:text-3xl">
+              <p className="text-2xl font-light sm:text-3xl">
                 {personal.status}
               </p>
               <div className="mt-6">
