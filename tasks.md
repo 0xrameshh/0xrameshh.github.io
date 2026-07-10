@@ -19,6 +19,7 @@
 - T1b: Guard content animations (RotatingRoles, Counter, Reveal, Magnetic, TiltCard, ScrollProgress) for prefers-reduced-motion
 
 ## In Progress (WIP ≤ 2)
+- T13: Upgrade typography — Space Grotesk + Space Mono, intentional font weights
 
 ## In Review / Test
 
@@ -33,3 +34,4 @@
 - T10: Fix dark-mode text contrast (watermark, section numbers, secondary labels)
 - T11: Simplify redesign — clean portfolio layout, less overengineered
 - T12: Increase text contrast across the portfolio
+- T13: Typography upgrade — Space Grotesk + Space Mono, intentional weights
