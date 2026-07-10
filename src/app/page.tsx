@@ -23,7 +23,6 @@ import KineticName from "@/components/kinetic-name";
 import IntroCurtain from "@/components/intro-curtain";
 import SectionRail from "@/components/section-rail";
 import Confetti from "@/components/confetti";
-import BadgeWall from "@/components/badge-wall";
 import EmailButton from "@/components/email-button";
 import {
   FolderGit2,
@@ -221,14 +220,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      <div className="flex items-center justify-center gap-3 pt-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
-          Stack
-        </span>
-        <span className="h-px w-8 bg-zinc-200 dark:bg-zinc-800" />
-      </div>
-      <BadgeWall />
 
       {/* ── Skills ── */}
       <section id="skills" className="mx-auto max-w-4xl scroll-mt-20 px-4 pb-16">
