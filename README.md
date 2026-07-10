@@ -1,22 +1,21 @@
 # Ramesh — Portfolio
 
-Personal site for my work as a full-stack engineer.
+Personal site & portfolio for my work as a full-stack & AI engineer.
 
-**Live site:** [0xrameshh.github.io](https://0xrameshh.github.io)
+**Live:** [0xrameshh.github.io](https://0xrameshh.github.io)
 
 ## Stack
+Next.js (App Router, static export) · React · TypeScript · Tailwind CSS v4 · Space Grotesk / Space Mono
 
-Next.js · React · TypeScript · Tailwind CSS · GitHub Pages
+## Design
+Monochrome, content-first layout. Type: Space Grotesk (display/body) + Space Mono (labels). Dark/light aware; honors `prefers-reduced-motion`.
 
 ## Local dev
-
 ```bash
 npm install
 npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000). Content lives in `src/lib/data.ts`.
+All content lives in `src/lib/data.ts`.
 
 ## Deploy
-
-Pushes to `main` deploy automatically via GitHub Actions.
+Static export (`output: 'export'`) to `./out`, deployed to GitHub Pages on every push to `main` via GitHub Actions.
