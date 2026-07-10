@@ -13,6 +13,7 @@
 ## Backlog
 - T3: Perf — dynamic-import heavy bg/animated components (Constellation, Confetti, Cursor)
 - T4: README + final deploy verification (GitHub Pages)
+- T8: Clean up dead components after redesign
 
 ## Ready
 - T1b: Guard content animations (RotatingRoles, Counter, Reveal, Magnetic, TiltCard, ScrollProgress) for prefers-reduced-motion
@@ -27,3 +28,4 @@
 - T2: SEO/social completeness (twitter, canonical, robots, themeColor, metadataBase)
 - T5: Monochrome (black & white) theme — remove blue/cyan/pink accents
 - T6: Remove stacked badge icons (BadgeWall)
+- T7: Complete UI redesign — editorial brutalist layout
