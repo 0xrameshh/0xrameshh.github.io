@@ -35,3 +35,4 @@
 - T11: Simplify redesign — clean portfolio layout, less overengineered
 - T12: Increase text contrast across the portfolio
 - T13: Typography upgrade — Space Grotesk + Space Mono, intentional weights
+- T14: Fix light-mode text contrast (proper dual-mode gray scale)
