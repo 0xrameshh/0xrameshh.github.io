@@ -41,7 +41,15 @@ export default function Home() {
 
       <main className="relative min-h-screen bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
         {/* ── Hero ── */}
-        <section className="grid min-h-[92vh] grid-cols-1 border-b border-zinc-950 dark:border-zinc-50 lg:grid-cols-12">
+        <section className="relative grid min-h-[92vh] grid-cols-1 overflow-hidden border-b border-zinc-950 dark:border-zinc-50 lg:grid-cols-12">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 flex select-none items-center justify-center overflow-hidden"
+          >
+            <span className="text-[clamp(8rem,22vw,26rem)] font-bold leading-none tracking-tighter text-zinc-100 dark:text-zinc-900">
+              ENGINEER
+            </span>
+          </div>
           <div className="flex flex-col justify-between border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-7 lg:border-b-0 lg:border-r">
             <div className="flex items-center justify-between">
               <Label>Portfolio / {new Date().getFullYear()}</Label>
@@ -138,12 +146,15 @@ export default function Home() {
           className="border-b border-zinc-950 dark:border-zinc-50"
         >
           <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
-              <Label className="sticky top-24 block text-zinc-400">
-                01 — Skills
-              </Label>
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
+              <div className="sticky top-24">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                  01
+                </span>
+                <Label className="block text-zinc-400">Skills</Label>
+              </div>
             </div>
-            <div className="p-6 lg:col-span-10">
+            <div className="p-6 lg:col-span-9">
               <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 {skillGroups.map((g) => (
                   <div key={g.category}>
@@ -166,12 +177,15 @@ export default function Home() {
           className="border-b border-zinc-950 dark:border-zinc-50"
         >
           <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
-              <Label className="sticky top-24 block text-zinc-400">
-                02 — Experience
-              </Label>
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
+              <div className="sticky top-24">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                  02
+                </span>
+                <Label className="block text-zinc-400">Experience</Label>
+              </div>
             </div>
-            <div className="p-6 lg:col-span-10">
+            <div className="p-6 lg:col-span-9">
               {experience.map((exp) => (
                 <div
                   key={exp.role}
@@ -213,46 +227,57 @@ export default function Home() {
           className="border-b border-zinc-950 dark:border-zinc-50"
         >
           <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
-              <Label className="sticky top-24 block text-zinc-400">
-                03 — Projects
-              </Label>
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
+              <div className="sticky top-24">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                  03
+                </span>
+                <Label className="block text-zinc-400">Projects</Label>
+              </div>
             </div>
-            <div className="lg:col-span-10">
+            <div className="lg:col-span-9">
               {projects.map((p, i) => (
                 <a
                   key={p.name}
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group grid items-start gap-4 border-b border-zinc-200 p-6 transition-colors last:border-0 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900 sm:grid-cols-12"
+                  className="group grid items-start gap-4 border-b border-zinc-200 p-6 transition-all last:border-0 hover:bg-zinc-950 hover:text-white dark:border-zinc-800 dark:hover:bg-zinc-50 dark:hover:text-zinc-950 sm:grid-cols-12"
                 >
                   <div className="sm:col-span-1">
-                    <Label className="text-zinc-400">
+                    <Label className="text-zinc-400 transition-colors group-hover:text-zinc-300 dark:group-hover:text-zinc-700">
                       {String(i + 1).padStart(2, "0")}
                     </Label>
                   </div>
                   <div className="sm:col-span-5">
-                    <p className="text-xl font-semibold tracking-tight group-hover:underline">
+                    <p className="text-xl font-semibold tracking-tight">
                       {p.name}
                     </p>
                     <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
                       {p.stack.map((t) => (
-                        <Label key={t} className="text-zinc-400">
+                        <Label
+                          key={t}
+                          className="text-zinc-400 transition-colors group-hover:text-zinc-300 dark:group-hover:text-zinc-700"
+                        >
                           {t}
                         </Label>
                       ))}
                     </div>
                   </div>
                   <div className="sm:col-span-5">
-                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                    <p className="text-sm leading-relaxed transition-colors">
                       {p.highlights[0]}
                     </p>
+                    {p.highlights[1] && (
+                      <p className="mt-2 text-sm leading-relaxed opacity-0 transition-opacity group-hover:opacity-60">
+                        {p.highlights[1]}
+                      </p>
+                    )}
                   </div>
                   <div className="sm:col-span-1 flex justify-end">
                     <ArrowUpRight
                       size={18}
-                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                     />
                   </div>
                 </a>
@@ -267,12 +292,15 @@ export default function Home() {
           className="border-b border-zinc-950 dark:border-zinc-50"
         >
           <div className="grid lg:grid-cols-12">
-            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
-              <Label className="sticky top-24 block text-zinc-400">
-                04 — Info
-              </Label>
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-3 lg:border-b-0 lg:border-r">
+              <div className="sticky top-24">
+                <span className="block text-5xl font-bold leading-none text-zinc-200 dark:text-zinc-800">
+                  04
+                </span>
+                <Label className="block text-zinc-400">Info</Label>
+              </div>
             </div>
-            <div className="p-6 lg:col-span-10">
+            <div className="p-6 lg:col-span-9">
               <div className="grid gap-10 sm:grid-cols-2">
                 <div>
                   <Label className="mb-2 block text-zinc-400">Education</Label>

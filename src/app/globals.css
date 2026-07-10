@@ -31,49 +31,6 @@
   }
 }
 
-/* Animated aurora glow behind the page */
-.aurora {
-  background:
-    radial-gradient(38rem 38rem at 18% 0%, color-mix(in srgb, var(--color-brand-400) 20%, transparent), transparent 60%),
-    radial-gradient(32rem 32rem at 82% 8%, color-mix(in srgb, var(--color-brand-300) 13%, transparent), transparent 60%),
-    radial-gradient(30rem 30rem at 55% 100%, color-mix(in srgb, var(--color-brand-200) 9%, transparent), transparent 60%);
-  filter: blur(46px);
-  animation: aurora-move 20s ease-in-out infinite alternate;
-}
-
-@keyframes aurora-move {
-  0% { transform: translate3d(-2%, 0, 0) scale(1); }
-  100% { transform: translate3d(2%, -3%, 0) scale(1.12); }
-}
-
-/* Gradient text for the name */
-.text-gradient {
-  background-image: linear-gradient(
-    115deg,
-    var(--color-zinc-800),
-    var(--color-zinc-300) 50%,
-    var(--color-zinc-800)
-  );
-  background-size: 220% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-pan 7s linear infinite;
-}
-
-@keyframes gradient-pan {
-  to { background-position: 220% center; }
-}
-
-/* Infinite tech marquee */
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 @keyframes pulse-ring {
   0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-500) 60%, transparent); }
   70% { box-shadow: 0 0 0 7px transparent; }
@@ -85,50 +42,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora,
-  .text-gradient,
-  .animate-marquee,
   .animate-pulse-ring {
     animation: none;
   }
-  .text-gradient {
-    background-position: 0 center;
-  }
-}
-
-/* Film-grain overlay for a premium finish */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-}
-
-
-/* Kinetic name reveal */
-@keyframes letter-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5em);
-    filter: blur(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-.kinetic-letter {
-  animation: letter-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .kinetic-letter {
-    animation: none;
-  }
-}
-
-/* Intro curtain loader shimmer */
-@keyframes curtain-load {
-  0% { transform: translateX(-120%); }
-  100% { transform: translateX(420%); }
 }
