@@ -3,364 +3,328 @@ import {
   stats,
   currently,
   skillGroups,
-  skills,
   experience,
   projects,
   education,
 } from "@/lib/data";
 import Nav from "@/components/nav";
-import Reveal from "@/components/reveal";
-import RotatingRoles from "@/components/rotating-roles";
 import Cursor from "@/components/cursor";
 import ScrollProgress from "@/components/scroll-progress";
-import Counter from "@/components/counter";
-import LiveClock from "@/components/live-clock";
-import Timeline from "@/components/timeline";
-import Projects from "@/components/projects";
-import Constellation from "@/components/constellation";
-import CommandPalette from "@/components/command-palette";
-import KineticName from "@/components/kinetic-name";
-import IntroCurtain from "@/components/intro-curtain";
 import SectionRail from "@/components/section-rail";
-import Confetti from "@/components/confetti";
+import CommandPalette from "@/components/command-palette";
 import EmailButton from "@/components/email-button";
-import {
-  FolderGit2,
-  MapPin,
-  Mail,
-  Briefcase,
-  GraduationCap,
-  Code2,
-  Sparkles,
-  Clock,
-  Zap,
-  BookOpen,
-} from "lucide-react";
+import { ArrowUpRight, MapPin, Mail } from "lucide-react";
 
-function SectionHeading({
-  index,
-  icon: Icon,
+const Label = ({
   children,
+  className = "",
 }: {
-  index?: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
   children: React.ReactNode;
-}) {
-  return (
-    <h2 className="flex items-center gap-3 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
-        <Icon size={15} />
-      </span>
-      {children}
-      {index && (
-        <span className="ml-auto font-mono text-xs font-medium text-zinc-300 dark:text-zinc-600">
-          {index}
-        </span>
-      )}
-    </h2>
-  );
-}
+  className?: string;
+}) => (
+  <span
+    className={`font-mono text-[11px] uppercase tracking-[0.18em] ${className}`}
+  >
+    {children}
+  </span>
+);
 
-function ContactChip({
-  href,
-  icon: Icon,
-  children,
-}: {
-  href?: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-  children: React.ReactNode;
-}) {
-  const inner = (
-    <span className="flex items-center gap-1.5 transition-colors">
-      <Icon size={14} className="text-brand-500 dark:text-brand-400" />
-      <span>{children}</span>
-    </span>
-  );
-  const cls =
-    "rounded-full border border-zinc-200 bg-white/60 px-3 py-1.5 text-sm text-zinc-700 backdrop-blur-sm transition-all hover:border-brand-300 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-200 dark:hover:border-brand-500/40 dark:hover:text-white";
-  if (href) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-        {inner}
-      </a>
-    );
-  }
-  return <span className={cls}>{inner}</span>;
-}
-
-const card =
-  "rounded-2xl border border-zinc-200 bg-white/60 p-5 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/40";
 
 export default function Home() {
   return (
     <>
       <Cursor />
       <ScrollProgress />
-      <Constellation />
-      <IntroCurtain />
       <SectionRail />
-      <Confetti />
       <CommandPalette />
-
-      {/* Animated aurora + grain backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-      >
-        <div className="aurora absolute -inset-40 opacity-40 dark:opacity-70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/40 dark:to-zinc-950/40" />
-      </div>
-      <div
-        aria-hidden
-        className="grain pointer-events-none fixed inset-0 -z-10"
-      />
-
       <Nav />
 
-      {/* ── Bento Hero ── */}
-      <header className="mx-auto max-w-4xl px-4 pb-10 pt-20 sm:pt-28">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {/* Name + roles */}
-          <Reveal className="sm:col-span-2">
-            <div className={card}>
-              <h1 className="text-5xl font-bold tracking-tight text-gradient sm:text-7xl">
-                <KineticName name={personal.name} />
+      <main className="relative min-h-screen bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+        {/* ── Hero ── */}
+        <section className="grid min-h-[92vh] grid-cols-1 border-b border-zinc-950 dark:border-zinc-50 lg:grid-cols-12">
+          <div className="flex flex-col justify-between border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-7 lg:border-b-0 lg:border-r">
+            <div className="flex items-center justify-between">
+              <Label>Portfolio / {new Date().getFullYear()}</Label>
+              <div className="flex items-center gap-2 text-zinc-500">
+                <MapPin size={12} />
+                <Label>{personal.location}</Label>
+              </div>
+            </div>
+
+            <div>
+              <h1 className="text-[clamp(3.5rem,12vw,14rem)] font-bold leading-[0.82] tracking-tighter">
+                {personal.name.split(" ").map((part, i, arr) => (
+                  <span key={i} className="block">
+                    {part}
+                    {i < arr.length - 1 ? "" : "."}
+                  </span>
+                ))}
               </h1>
-              <RotatingRoles initial={personal.title} />
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p className="mt-8 max-w-lg text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {personal.summary}
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-2.5">
-                <ContactChip icon={MapPin}>{personal.location}</ContactChip>
-                <ContactChip href={`https://${personal.website}`} icon={FolderGit2}>
-                  {personal.website}
-                </ContactChip>
-                <ContactChip href={`mailto:${personal.email}`} icon={Mail}>
-                  {personal.email}
-                </ContactChip>
-              </div>
             </div>
-          </Reveal>
 
-          {/* Status + clock */}
-          <Reveal delay={80}>
-            <div className={`${card} flex h-full flex-col justify-between gap-4`}>
+            <div className="flex flex-wrap items-center gap-4">
+              <Label
+                className={`inline-flex items-center gap-2 ${
+                  personal.available ? "text-zinc-950 dark:text-zinc-50" : "text-zinc-400"
+                }`}
+              >
+                <span className="relative flex h-2 w-2">
+                  {personal.available && (
+                    <>
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-current opacity-40 animate-ping" />
+                      <span className="relative inline-flex h-full w-full rounded-full bg-current" />
+                    </>
+                  )}
+                  {!personal.available && (
+                    <span className="inline-flex h-full w-full rounded-full bg-current" />
+                  )}
+                </span>
+                {personal.status}
+              </Label>
+              <a
+                href={`mailto:${personal.email}`}
+                className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50"
+              >
+                <Mail size={12} />
+                {personal.email}
+                <ArrowUpRight
+                  size={12}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-between p-6 lg:col-span-5">
+            <div className="space-y-10">
               <div>
-                {personal.available && (
-                  <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 dark:border-brand-500/20 dark:bg-brand-500/10 dark:text-brand-300">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-brand-500 animate-pulse-ring" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
-                    </span>
-                    Available
-                  </div>
-                )}
-                <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
-                  {personal.status}
+                <Label className="mb-2 block text-zinc-400">Role</Label>
+                <p className="text-2xl font-medium leading-tight tracking-tight">
+                  {personal.title}
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-200">
-                <Clock size={15} className="text-brand-500 dark:text-brand-400" />
-                <LiveClock />
-                <span className="text-zinc-400 dark:text-zinc-500">IST</span>
+              <div>
+                <Label className="mb-2 block text-zinc-400">Building</Label>
+                <p className="text-xl font-medium">{currently.building}</p>
+                <p className="mt-1 text-zinc-500">
+                  Learning {currently.learning}
+                </p>
               </div>
             </div>
-          </Reveal>
 
-          {/* Stats */}
-          <Reveal delay={120} className="sm:col-span-2">
-            <div className="grid h-full grid-cols-2 gap-4">
+            <div className="mt-10 grid grid-cols-2 gap-px border border-zinc-950 bg-zinc-950 dark:border-zinc-50 dark:bg-zinc-50">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="flex flex-col justify-center rounded-2xl border border-zinc-200 bg-white/60 p-4 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/40"
+                  className="bg-white p-5 dark:bg-zinc-950"
                 >
-                  <span className="text-3xl font-bold tracking-tight text-gradient">
-                    <Counter value={s.value} suffix={s.suffix} />
-                  </span>
-                  <span className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                    {s.label}
-                  </span>
+                  <p className="text-3xl font-bold tracking-tight">
+                    {s.value}
+                    {s.suffix}
+                  </p>
+                  <Label className="text-zinc-400">{s.label}</Label>
                 </div>
               ))}
             </div>
-          </Reveal>
-
-          {/* Currently */}
-          <Reveal delay={160}>
-            <div className={`${card} flex h-full flex-col gap-3`}>
-              <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                <Zap size={13} /> Currently
-              </p>
-              <div className="flex items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
-                <BookOpen size={14} className="mt-0.5 shrink-0 text-zinc-400" />
-                <span>
-                  Building <strong className="font-semibold">{currently.building}</strong>
-                </span>
-              </div>
-              <div className="flex items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
-                <Sparkles size={14} className="mt-0.5 shrink-0 text-zinc-400" />
-                <span>Learning {currently.learning}</span>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </header>
-
-      {/* ── Tech marquee ── */}
-      <div className="relative mb-16 mt-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee gap-3 pr-3">
-          {[...skills, ...skills].map((s, i) => (
-            <span
-              key={i}
-              className="shrink-0 rounded-full border border-zinc-200 bg-white/60 px-3 py-1.5 text-sm font-medium text-zinc-600 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-300"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Skills ── */}
-      <section id="skills" className="mx-auto max-w-4xl scroll-mt-20 px-4 pb-16">
-        <Reveal>
-          <SectionHeading index="01" icon={Sparkles}>Skills</SectionHeading>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((group) => (
-              <div
-                key={group.category}
-                className="rounded-xl border border-zinc-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-brand-300 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-brand-500/40"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-                  {group.category}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {group.items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
-        </Reveal>
-      </section>
+        </section>
 
-      {/* ── Experience (timeline) ── */}
-      <section
-        id="experience"
-        className="mx-auto max-w-4xl scroll-mt-20 px-4 pb-16"
-      >
-        <Reveal>
-          <SectionHeading index="02" icon={Briefcase}>Experience</SectionHeading>
-          <Timeline>
-            {experience.map((exp) => (
-              <li key={exp.role} className="relative">
-                <span className="absolute -left-[2.4rem] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-brand-500 dark:border-zinc-950" />
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
-                      {exp.role}
-                    </h3>
-                    <p className="text-sm font-medium text-brand-600 dark:text-brand-400">
-                      {exp.company}
+        {/* ── Skills ── */}
+        <section
+          id="skills"
+          className="border-b border-zinc-950 dark:border-zinc-50"
+        >
+          <div className="grid lg:grid-cols-12">
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
+              <Label className="sticky top-24 block text-zinc-400">
+                01 — Skills
+              </Label>
+            </div>
+            <div className="p-6 lg:col-span-10">
+              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                {skillGroups.map((g) => (
+                  <div key={g.category}>
+                    <Label className="mb-3 block text-zinc-400">
+                      {g.category}
+                    </Label>
+                    <p className="text-lg font-medium leading-snug">
+                      {g.items.join(" · ")}
                     </p>
                   </div>
-                  <p className="shrink-0 text-xs text-zinc-500 dark:text-zinc-400">
-                    {exp.period} · {exp.location}
-                  </p>
-                </div>
-                <ul className="mt-3 grid gap-2">
-                  {exp.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
-                    >
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-600" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </Timeline>
-        </Reveal>
-      </section>
-
-      {/* ── Projects ── */}
-      <section
-        id="projects"
-        className="mx-auto max-w-4xl scroll-mt-20 px-4 pb-16"
-      >
-        <Reveal>
-          <SectionHeading index="03" icon={Code2}>Projects</SectionHeading>
-          <Projects projects={projects} />
-        </Reveal>
-      </section>
-
-      {/* ── Education ── */}
-      <section className="mx-auto max-w-4xl px-4 pb-16">
-        <Reveal>
-          <SectionHeading index="04" icon={GraduationCap}>Education</SectionHeading>
-          <div className="relative mt-6 border-l border-zinc-200 pl-8 dark:border-zinc-800">
-            <div className="relative">
-              <span className="absolute -left-[2.4rem] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-brand-500 dark:border-zinc-950" />
-              <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-                <div>
-                  <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
-                    {education.school}
-                  </h3>
-                  <p className="text-sm font-medium text-brand-600 dark:text-brand-400">
-                    {education.degree}
-                  </p>
-                </div>
-                <p className="shrink-0 text-xs text-zinc-500 dark:text-zinc-400">
-                  {education.year}
-                </p>
+                ))}
               </div>
             </div>
           </div>
-        </Reveal>
-      </section>
+        </section>
 
-      {/* ── Contact / Footer ── */}
-      <footer
-        id="contact"
-        className="border-t border-zinc-200 dark:border-zinc-800"
-      >
-        <div className="mx-auto max-w-4xl px-4 py-12">
-          <Reveal>
-            <div className="flex flex-col items-center gap-4 text-center">
-              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-                Let&apos;s build something
-              </h2>
-              <p className="max-w-sm text-sm text-zinc-500 dark:text-zinc-400">
-                Looking for a full-stack or AI engineer? I&apos;m open to freelance
-                and full-time work — let&apos;s talk.
-              </p>
-              <div className="mt-1 flex flex-wrap items-center justify-center gap-3">
-                <EmailButton />
+        {/* ── Experience ── */}
+        <section
+          id="experience"
+          className="border-b border-zinc-950 dark:border-zinc-50"
+        >
+          <div className="grid lg:grid-cols-12">
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
+              <Label className="sticky top-24 block text-zinc-400">
+                02 — Experience
+              </Label>
+            </div>
+            <div className="p-6 lg:col-span-10">
+              {experience.map((exp) => (
+                <div
+                  key={exp.role}
+                  className="grid gap-4 border-b border-zinc-200 py-8 last:border-0 dark:border-zinc-800 sm:grid-cols-12"
+                >
+                  <div className="sm:col-span-4">
+                    <p className="text-lg font-semibold tracking-tight">
+                      {exp.role}
+                    </p>
+                    <p className="text-zinc-500">{exp.company}</p>
+                  </div>
+                  <div className="sm:col-span-5">
+                    <ul className="space-y-2">
+                      {exp.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300"
+                        >
+                          — {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="sm:col-span-3">
+                    <Label className="block text-zinc-400">{exp.period}</Label>
+                    <Label className="block text-zinc-400">
+                      {exp.location}
+                    </Label>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Projects ── */}
+        <section
+          id="projects"
+          className="border-b border-zinc-950 dark:border-zinc-50"
+        >
+          <div className="grid lg:grid-cols-12">
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
+              <Label className="sticky top-24 block text-zinc-400">
+                03 — Projects
+              </Label>
+            </div>
+            <div className="lg:col-span-10">
+              {projects.map((p, i) => (
                 <a
-                  href={`https://${personal.website}`}
+                  key={p.name}
+                  href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:border-brand-300 hover:text-brand-600 dark:border-zinc-800 dark:text-zinc-200 dark:hover:border-brand-500/40 dark:hover:text-brand-400"
+                  className="group grid items-start gap-4 border-b border-zinc-200 p-6 transition-colors last:border-0 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900 sm:grid-cols-12"
                 >
-                  <FolderGit2 size={15} />
-                  GitHub
+                  <div className="sm:col-span-1">
+                    <Label className="text-zinc-400">
+                      {String(i + 1).padStart(2, "0")}
+                    </Label>
+                  </div>
+                  <div className="sm:col-span-5">
+                    <p className="text-xl font-semibold tracking-tight group-hover:underline">
+                      {p.name}
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                      {p.stack.map((t) => (
+                        <Label key={t} className="text-zinc-400">
+                          {t}
+                        </Label>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="sm:col-span-5">
+                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                      {p.highlights[0]}
+                    </p>
+                  </div>
+                  <div className="sm:col-span-1 flex justify-end">
+                    <ArrowUpRight
+                      size={18}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </div>
                 </a>
-              </div>
-              <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-500">
-                © {new Date().getFullYear()} {personal.name}
-              </p>
+              ))}
             </div>
-          </Reveal>
-        </div>
-      </footer>
+          </div>
+        </section>
+
+        {/* ── Education / Contact ── */}
+        <section
+          id="contact"
+          className="border-b border-zinc-950 dark:border-zinc-50"
+        >
+          <div className="grid lg:grid-cols-12">
+            <div className="border-b border-zinc-950 p-6 dark:border-zinc-50 lg:col-span-2 lg:border-b-0 lg:border-r">
+              <Label className="sticky top-24 block text-zinc-400">
+                04 — Info
+              </Label>
+            </div>
+            <div className="p-6 lg:col-span-10">
+              <div className="grid gap-10 sm:grid-cols-2">
+                <div>
+                  <Label className="mb-2 block text-zinc-400">Education</Label>
+                  <p className="text-lg font-medium">{education.school}</p>
+                  <p className="text-zinc-500">
+                    {education.degree} · {education.year}
+                  </p>
+                </div>
+                <div>
+                  <Label className="mb-2 block text-zinc-400">Contact</Label>
+                  <EmailButton />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Footer ── */}
+        <footer className="flex flex-col justify-between gap-4 p-6 sm:flex-row sm:items-center">
+          <Label className="text-zinc-400">
+            © {new Date().getFullYear()} {personal.name}
+          </Label>
+          <div className="flex items-center gap-6">
+            <a
+              href={`https://${personal.website}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1"
+            >
+              <Label className="text-zinc-400 transition-colors group-hover:text-zinc-950 dark:group-hover:text-zinc-50">
+                GitHub
+              </Label>
+              <ArrowUpRight
+                size={12}
+                className="text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+            <a
+              href={`mailto:${personal.email}`}
+              className="group inline-flex items-center gap-1"
+            >
+              <Label className="text-zinc-400 transition-colors group-hover:text-zinc-950 dark:group-hover:text-zinc-50">
+                Email
+              </Label>
+              <ArrowUpRight
+                size={12}
+                className="text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          </div>
+        </footer>
+      </main>
     </>
   );
 }
