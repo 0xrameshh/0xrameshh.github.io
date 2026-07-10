@@ -31,3 +31,4 @@
 - T7: Complete UI redesign — editorial brutalist layout
 - T9: Iterate brutalist UI — watermark, stronger labels, project hover reveal, EmailButton redesign
 - T10: Fix dark-mode text contrast (watermark, section numbers, secondary labels)
+- T11: Simplify redesign — clean portfolio layout, less overengineered
