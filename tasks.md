@@ -11,15 +11,10 @@
 - Docs updated if behavior changed
 
 ## Backlog
-- T3: Perf — dynamic-import heavy bg/animated components (Constellation, Confetti, Cursor)
-- T4: README + final deploy verification (GitHub Pages)
-- T8: Clean up dead components after redesign
 
 ## Ready
-- T1b: Guard content animations (RotatingRoles, Counter, Reveal, Magnetic, TiltCard, ScrollProgress) for prefers-reduced-motion
 
 ## In Progress (WIP ≤ 2)
-- T13: Upgrade typography — Space Grotesk + Space Mono, intentional font weights
 
 ## In Review / Test
 
@@ -36,3 +31,7 @@
 - T12: Increase text contrast across the portfolio
 - T13: Typography upgrade — Space Grotesk + Space Mono, intentional weights
 - T14: Fix light-mode text contrast (proper dual-mode gray scale)
+- T8: Clean up dead components after redesign (removed 13 unused components)
+- T3: Perf — resolved by removing heavy animated components (Constellation, Confetti)
+- T1b: Guard content animations for prefers-reduced-motion (ScrollProgress; others deleted)
+- T4: README + final deploy verification (GitHub Pages)
