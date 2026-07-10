@@ -25,3 +25,4 @@
 - Baseline: incoming portfolio build-out committed
 - T1a: Motion-safety — custom cursor respects prefers-reduced-motion
 - T2: SEO/social completeness (twitter, canonical, robots, themeColor, metadataBase)
+- T5: Monochrome (black & white) theme — remove blue/cyan/pink accents
